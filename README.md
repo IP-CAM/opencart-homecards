@@ -5,4 +5,4 @@ Homecards is a module for OpenCart. It can show compact cards for all main categ
 
 ## License ##
 
-Released under The MIT License (MIT). See [LICENSE.md](https://github.com/nowm/opencart-homecards/blob/master/LICENSE.md)
+Released under the MIT License (MIT). See [LICENSE.md](https://github.com/nowm/opencart-homecards/blob/master/LICENSE.md)
