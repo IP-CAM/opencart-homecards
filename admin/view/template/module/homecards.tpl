@@ -67,7 +67,7 @@
 					<?php } ?> 
 					<tfoot>
 						<tr>
-							<td colspan="4"></td>
+							<td colspan="6"></td>
 							<td class="left"><a onclick="addModule();" class="button"><?php echo $button_add_module; ?></a></td>
 						</tr>
 					</tfoot>
