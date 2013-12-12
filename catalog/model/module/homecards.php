@@ -14,7 +14,7 @@ class ModelModuleHomecards extends Model {
 			FROM `" . DB_PREFIX . "category` c
 			RIGHT JOIN `" . DB_PREFIX . "product_to_category` p2c ON p2c.category_id = c.category_id
 			RIGHT JOIN `" . DB_PREFIX . "product` p ON p2c.product_id = p.product_id
-			LEFT JOIN `" . DB_PREFIX . "product_special` ps ON p.product_id = ps.product_id
+			LEFT JOIN `" . DB_PREFIX . "product_special` ps ON p.product_id = ps.product_id AND ps.date_end >= NOW() AND ps.date_start <= NOW()
 			WHERE c.category_id = " . (int)$category_id . " AND p.status = 1 AND c.status = 1
 			ORDER BY minimum_price
 			LIMIT 0,1
@@ -39,7 +39,7 @@ class ModelModuleHomecards extends Model {
 				FROM `" . DB_PREFIX . "category` c
 				RIGHT JOIN `" . DB_PREFIX . "product_to_category` p2c ON p2c.category_id = c.category_id
 				RIGHT JOIN `" . DB_PREFIX . "product` p ON p2c.product_id = p.product_id
-				LEFT JOIN `" . DB_PREFIX . "product_special` ps ON p.product_id = ps.product_id
+				LEFT JOIN `" . DB_PREFIX . "product_special` ps ON p.product_id = ps.product_id AND ps.date_end >= NOW() AND ps.date_start <= NOW()
 				WHERE c.category_id IN (" . implode(',', $categories) . ") AND p.status = 1 AND c.status = 1
 				ORDER BY minimum_price
 				LIMIT 0,1
@@ -72,7 +72,7 @@ class ModelModuleHomecards extends Model {
 				FROM `" . DB_PREFIX . "category` c 
 				RIGHT JOIN `" . DB_PREFIX . "product_to_category` p2c ON p2c.category_id = c.category_id 
 				RIGHT JOIN `" . DB_PREFIX . "product` p ON p2c.product_id = p.product_id
-				LEFT JOIN `" . DB_PREFIX . "product_special` ps ON p.product_id = ps.product_id 
+				LEFT JOIN `" . DB_PREFIX . "product_special` ps ON p.product_id = ps.product_id AND ps.date_end >= NOW() AND ps.date_start <= NOW()
 				LEFT JOIN `" . DB_PREFIX . "product_description` pd ON 
 					p.product_id = pd.product_id AND 
 					pd.language_id = " . (int)$this->config->get('config_language_id') . "
@@ -111,7 +111,7 @@ class ModelModuleHomecards extends Model {
 			FROM `" . DB_PREFIX . "product` p
 			LEFT JOIN `" . DB_PREFIX . "product_to_category` p2c ON p2c.product_id = p.product_id
 			LEFT JOIN `" . DB_PREFIX . "category` c ON c.category_id = p2c.category_id
-			LEFT JOIN `" . DB_PREFIX . "product_special` ps ON ps.product_id = p.product_id 
+			LEFT JOIN `" . DB_PREFIX . "product_special` ps ON ps.product_id = p.product_id AND ps.date_end >= NOW() AND ps.date_start <= NOW()
 			LEFT JOIN `" . DB_PREFIX . "product_description` pd ON 
 				pd.product_id = p.product_id AND 
 				pd.language_id = " . (int)$this->config->get('config_language_id') . "
