@@ -127,6 +127,10 @@ class ControllerModuleHomecards extends Controller {
             $this->error['warning'] = $this->language->get('error_permission');
         }
         
-        return !boolval($this->error);
+        if (!$this->error) {
+            return true;
+        }
+        
+        return false;
     }
 }
